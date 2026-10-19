@@ -50,7 +50,6 @@ def test_equality():
     assert grams(200) == grams(200)
     assert grams(200) != grams(300)
 
-
 def test_simple_addition():
     total = grams(200).plus(grams(300))
     converter = Converter()
@@ -65,3 +64,8 @@ def test_mixed_addition():
     converter.add_rate("oz", "g", 28)
     total = grams(200).plus(ounces(1))
     assert converter.reduce(total, "g") == grams(228)
+
+def test_ounces_to_grams_direction():
+    converter = Converter()
+    converter.add_rate("oz", "g", 28)
+    assert converter.reduce(ounces(2), "g") == grams(56)
