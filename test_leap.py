@@ -1,15 +1,18 @@
 from leap import is_leap
 
+# 0.1
 def test_2024_is_a_leap_year():
     assert is_leap(2024)
 
+
+# 0.2
 # def test_1900_is_a_leap_year():
 #     assert is_leap(1900)
-
 def test_1900_is_not_a_leap_year():
     assert not is_leap(1900)
 
 
+# 0.3
 import pytest
 @pytest.mark.parametrize("year, expected", [
 (2000, True), # divisible by 400
@@ -21,3 +24,13 @@ import pytest
 ])
 def test_is_leap(year, expected):
     assert is_leap(year) == expected
+
+
+# 0.4
+def test_year_zero_is_rejected():
+    with pytest.raises(ValueError, match="1 or later"):
+        is_leap(0)
+
+def test_negative_year_is_rejected():
+    with pytest.raises(ValueError, match="1 or later"):
+        is_leap(-5)
