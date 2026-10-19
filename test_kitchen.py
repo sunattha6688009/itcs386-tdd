@@ -10,7 +10,7 @@
 
 
 # A1
-from kitchen import Quantity, grams, ounces
+from kitchen import Quantity, grams, ounces, Converter
 
 # def test_multiplication():
 #     flour = Quantity(200)
@@ -49,6 +49,7 @@ def test_multiplication_returns_a_new_quantity():
 def test_equality():
     assert grams(200) == grams(200)
     assert grams(200) != grams(300)
+
 
 def test_simple_addition():
     total = grams(200).plus(grams(300))
